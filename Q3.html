@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Programming Guide</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f5f7fa;
+    }
+
+
+    #navbar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 300px;
+      height: 100vh;
+      background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+      color: white;
+      overflow-y: auto;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    #navbar header {
+      padding: 30px 20px;
+      background: rgba(0, 0, 0, 0.2);
+      border-bottom: 3px solid #3498db;
+    }
+
+    #navbar header h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #3498db;
+    }
+
+    .nav-link {
+      display: block;
+      padding: 15px 20px;
+      color: #ecf0f1;
+      text-decoration: none;
+      border-left: 3px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      background: rgba(52, 152, 219, 0.1);
+      border-left-color: #3498db;
+      padding-left: 30px;
+    }
+
+    .nav-link.active {
+      background: rgba(52, 152, 219, 0.2);
+      border-left-color: #3498db;
+    }
+
+ 
+    #main-doc {
+      margin-left: 300px;
+      padding: 40px 60px;
+      max-width: 1200px;
+    }
+
+    .main-section {
+      margin-bottom: 60px;
+      animation: fadeIn 0.6s ease-out;
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .main-section header {
+      font-size: 2rem;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #3498db;
+    }
+
+    p {
+      margin-bottom: 15px;
+      color: #555;
+      font-size: 1.05rem;
+    }
+
+    code {
+      background: #f4f4f4;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      color: #e74c3c;
+      font-size: 0.95rem;
+    }
+
+    pre {
+      background: #2c3e50;
+      color: #ecf0f1;
+      padding: 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 20px 0;
+      border-left: 4px solid #3498db;
+    }
+
+    pre code {
+      background: none;
+      color: #ecf0f1;
+      padding: 0;
+    }
+
+    ul {
+      margin: 20px 0;
+      padding-left: 40px;
+    }
+
+    li {
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    .highlight {
+      background: #fff3cd;
+      padding: 15px;
+      border-left: 4px solid #ffc107;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+
+   
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+   
+    #navbar::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    #navbar::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    #navbar::-webkit-scrollbar-thumb {
+      background: #3498db;
+      border-radius: 4px;
+    }
+
+
+    @media (max-width: 768px) {
+      #navbar {
+        position: static;
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+      }
+
+      #navbar header {
+        text-align: center;
+      }
+
+      #main-doc {
+        margin-left: 0;
+        padding: 20px;
+      }
+
+      .main-section {
+        padding: 20px;
+      }
+
+      .main-section header {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main-section header {
+        font-size: 1.3rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+ 
+  <nav id="navbar">
+    <header>
+      <h1>🐍 Python Guide</h1>
+    </header>
+    <a href="#Introduction" class="nav-link">Introduction</a>
+    <a href="#Getting_Started" class="nav-link">Getting Started</a>
+    <a href="#Variables_and_Data_Types" class="nav-link">Variables and Data Types</a>
+    <a href="#Control_Flow" class="nav-link">Control Flow</a>
+    <a href="#Functions" class="nav-link">Functions</a>
+    <a href="#Lists_and_Dictionaries" class="nav-link">Lists and Dictionaries</a>
+  </nav>
+
+
+  <main id="main-doc">
+    
+
+    <section class="main-section" id="Introduction">
+      <header>Introduction</header>
+      <p>Python is a high-level, interpreted programming language known for its simplicity and readability. Created by Guido van Rossum and first released in 1991, Python has become one of the most popular programming languages in the world.</p>
+      <p>Python's design philosophy emphasizes code readability with its notable use of significant whitespace. Its language constructs and object-oriented approach aim to help programmers write clear, logical code for small and large-scale projects.</p>
+      <p>Python is dynamically typed and garbage-collected. It supports multiple programming paradigms, including structured, object-oriented, and functional programming.</p>
+      <div class="highlight">
+        <p><strong>Why Choose Python?</strong> Python is ideal for beginners and experts alike, offering a gentle learning curve while remaining powerful enough for complex applications.</p>
+      </div>
+    </section>
+
+  
+    <section class="main-section" id="Getting_Started">
+      <header>Getting Started</header>
+      <p>To start programming in Python, you'll need to install Python on your computer. Python can be downloaded from the official website at python.org. Most modern operating systems come with Python pre-installed, but it's recommended to install the latest version.</p>
+      <p>You can verify your Python installation by opening a terminal or command prompt and typing:</p>
+      <pre><code>python --version</code></pre>
+      <p>Your first Python program is traditionally a "Hello World" program. Here's how simple it is:</p>
+      <pre><code>print("Hello, World!")</code></pre>
+      <p>Python files use the <code>.py</code> extension. You can run a Python file from the command line using the <code>python</code> command followed by the filename.</p>
+      <ul>
+        <li>Install Python from python.org</li>
+        <li>Choose an IDE or text editor (VS Code, PyCharm, Sublime Text)</li>
+        <li>Write your first program</li>
+        <li>Run it using the terminal or your IDE's run button</li>
+      </ul>
+    </section>
+
+
+    <section class="main-section" id="Variables_and_Data_Types">
+      <header>Variables and Data Types</header>
+      <p>In Python, variables are created when you assign a value to them. Python is dynamically typed, so you don't need to declare the variable type explicitly.</p>
+      <p>Here are examples of different data types:</p>
+      <pre><code>name = "Alice"        # String
+age = 25              # Integer
+height = 5.6          # Float
+is_student = True     # Boolean</code></pre>
+      <p>Python has several built-in data types including integers, floats, strings, booleans, lists, tuples, dictionaries, and sets. Understanding these types is fundamental to Python programming.</p>
+      <p>You can check the type of any variable using the <code>type()</code> function:</p>
+      <pre><code>print(type(name))     # Output: &lt;class 'str'&gt;</code></pre>
+      <ul>
+        <li>Integers: whole numbers like 42, -17, 0</li>
+        <li>Floats: decimal numbers like 3.14, -0.5, 2.0</li>
+        <li>Strings: text enclosed in quotes like "Hello" or 'Python'</li>
+        <li>Booleans: True or False values</li>
+      </ul>
+    </section>
+
+   
+    <section class="main-section" id="Control_Flow">
+      <header>Control Flow</header>
+      <p>Control flow statements allow you to control the execution of your code based on conditions. The most common control flow statements in Python are <code>if</code>, <code>elif</code>, and <code>else</code>.</p>
+      <pre><code>age = 18
+
+if age >= 18:
+    print("You are an adult")
+elif age >= 13:
+    print("You are a teenager")
+else:
+    print("You are a child")</code></pre>
+      <p>Python also supports loops for repetitive tasks. The two main types of loops are <code>for</code> loops and <code>while</code> loops.</p>
+      <p>Here's a simple <code>for</code> loop example:</p>
+      <pre><code>for i in range(5):
+    print(f"Count: {i}")</code></pre>
+      <p>And a <code>while</code> loop example:</p>
+      <pre><code>count = 0
+while count < 5:
+    print(count)
+    count += 1</code></pre>
+      <ul>
+        <li>Use <code>if</code> statements for conditional execution</li>
+        <li>Use <code>for</code> loops to iterate over sequences</li>
+        <li>Use <code>while</code> loops when you need to repeat until a condition is met</li>
+      </ul>
+    </section>
+
+ 
+    <section class="main-section" id="Functions">
+      <header>Functions</header>
+      <p>Functions are reusable blocks of code that perform a specific task. In Python, you define a function using the <code>def</code> keyword.</p>
+      <pre><code>def greet(name):
+    return f"Hello, {name}!"
+
+message = greet("Alice")
+print(message)  # Output: Hello, Alice!</code></pre>
+      <p>Functions can take multiple parameters and return values. They help organize your code and make it more maintainable.</p>
+      <p>You can also define functions with default parameter values:</p>
+      <pre><code>def greet(name, greeting="Hello"):
+    return f"{greeting}, {name}!"
+
+print(greet("Bob"))              # Output: Hello, Bob!
+print(greet("Bob", "Hi"))        # Output: Hi, Bob!</code></pre>
+      <p>Functions are a fundamental building block in Python programming, allowing you to write modular and reusable code.</p>
+    </section>
+
+   
+    <section class="main-section" id="Lists_and_Dictionaries">
+      <header>Lists and Dictionaries</header>
+      <p>Lists and dictionaries are two of the most commonly used data structures in Python. Lists are ordered collections of items, while dictionaries store key-value pairs.</p>
+      <p>Creating and using lists:</p>
+      <pre><code>fruits = ["apple", "banana", "cherry"]
+print(fruits[0])       # Output: apple
+fruits.append("date")  # Add an item
+print(len(fruits))     # Output: 4</code></pre>
+      <p>Creating and using dictionaries:</p>
+      <pre><code>person = {
+    "name": "Alice",
+    "age": 25,
+    "city": "New York"
+}
+print(person["name"])  # Output: Alice
+person["email"] = "alice@example.com"  # Add a new key-value pair</code></pre>
+      <p>Both lists and dictionaries are mutable, meaning you can modify them after creation. They're incredibly versatile and used in almost every Python program.</p>
+      <ul>
+        <li>Lists use square brackets <code>[]</code> and maintain order</li>
+        <li>Dictionaries use curly braces <code>{}</code> and store key-value pairs</li>
+        <li>You can nest lists and dictionaries inside each other</li>
+        <li>List indices start at 0 in Python</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <script>
+  
+    const sections = document.querySelectorAll('.main-section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.pageYOffset >= sectionTop - 100) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').substring(1) === current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+  
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        
+        window.scrollTo({
+          top: targetSection.offsetTop - 20,
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

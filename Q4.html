@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Daily Bugle</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: #f5f5f5;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .newspaper-layout {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto 1fr 1fr 1fr;
+      grid-template-areas:
+        "title title title"
+        "feature-article feature-article cover-image"
+        "secondary-article secondary-article cover-image"
+        "small-article1 small-article2 small-article3";
+      gap: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    }
+
+
+    .title {
+      grid-area: title;
+      text-align: center;
+      padding: 30px 20px;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      color: white;
+      border-bottom: 4px solid #d4af37;
+      position: relative;
+    }
+
+    .title::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      border: 2px solid #d4af37;
+    }
+
+    .title h1 {
+      font-size: 3.5rem;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-family: 'Georgia', serif;
+      margin-bottom: 5px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .title::after {
+      content: 'EST. 2025 • TRUTH • INTEGRITY • EXCELLENCE';
+      display: block;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      margin-top: 10px;
+      color: #d4af37;
+    }
+
+ 
+    .feature-article {
+      grid-area: feature-article;
+      padding: 25px;
+      background: #fafafa;
+      border-left: 4px solid #d4af37;
+      transition: transform 0.3s ease;
+    }
+
+    .feature-article:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-article h2 {
+      font-size: 2.2rem;
+      color: #1a1a1a;
+      margin-bottom: 15px;
+      line-height: 1.2;
+      font-weight: bold;
+    }
+
+    .feature-article p {
+      font-size: 1.1rem;
+      color: #333;
+      text-align: justify;
+      column-count: 2;
+      column-gap: 20px;
+    }
+
+   
+    .cover-image {
+      grid-area: cover-image;
+      position: relative;
+      overflow: hidden;
+      background: #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cover-image img {
+      max-width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .cover-image:hover img {
+      transform: scale(1.05);
+    }
+
+    .cover-image figcaption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 10px;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+  
+    .secondary-article {
+      grid-area: secondary-article;
+      padding: 25px;
+      background: #f9f9f9;
+      border-left: 4px solid #c0c0c0;
+      transition: transform 0.3s ease;
+    }
+
+    .secondary-article:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .secondary-article h2 {
+      font-size: 1.8rem;
+      color: #1a1a1a;
+      margin-bottom: 15px;
+      line-height: 1.2;
+    }
+
+    .secondary-article p {
+      font-size: 1.05rem;
+      color: #333;
+      text-align: justify;
+      column-count: 2;
+      column-gap: 20px;
+    }
+
+
+    .small-article1,
+    .small-article2,
+    .small-article3 {
+      padding: 20px;
+      background: white;
+      border: 1px solid #e0e0e0;
+      border-top: 3px solid #666;
+      transition: all 0.3s ease;
+    }
+
+    .small-article1 {
+      grid-area: small-article1;
+      border-top-color: #e74c3c;
+    }
+
+    .small-article2 {
+      grid-area: small-article2;
+      border-top-color: #3498db;
+    }
+
+    .small-article3 {
+      grid-area: small-article3;
+      border-top-color: #2ecc71;
+    }
+
+    .small-article1:hover,
+    .small-article2:hover,
+    .small-article3:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .small-article1 h3,
+    .small-article2 h3,
+    .small-article3 h3 {
+      font-size: 1.3rem;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .small-article1 p,
+    .small-article2 p,
+    .small-article3 p {
+      font-size: 0.95rem;
+      color: #555;
+      text-align: justify;
+    }
+
+ 
+    .date-badge {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #1a1a1a;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 5px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      z-index: 100;
+    }
+
+    .date-badge .day {
+      font-size: 2rem;
+      font-weight: bold;
+      display: block;
+    }
+
+    .date-badge .month {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #d4af37;
+    }
+
+   
+    @media (max-width: 1024px) {
+      .newspaper-layout {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+          "title title"
+          "feature-article feature-article"
+          "cover-image cover-image"
+          "secondary-article secondary-article"
+          "small-article1 small-article2"
+          "small-article3 small-article3";
+        padding: 20px;
+      }
+
+      .title h1 {
+        font-size: 2.5rem;
+      }
+
+      .feature-article p,
+      .secondary-article p {
+        column-count: 1;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .newspaper-layout {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "title"
+          "feature-article"
+          "cover-image"
+          "secondary-article"
+          "small-article1"
+          "small-article2"
+          "small-article3";
+        gap: 15px;
+        padding: 15px;
+      }
+
+      .title h1 {
+        font-size: 2rem;
+      }
+
+      .date-badge {
+        position: static;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="date-badge">
+    <span class="day">30</span>
+    <span class="month">January 2026</span>
+  </div>
+
+  <main class="newspaper-layout">
+    
+
+    <header class="title">
+      <h1>The Daily Bugle</h1>
+    </header>
+
+
+    <article class="feature-article">
+      <h2>Revolutionary AI Technology Transforms Global Industries</h2>
+      <p>
+        In a groundbreaking development that promises to reshape the technological landscape, researchers have unveiled a new artificial intelligence system capable of unprecedented problem-solving abilities. The innovation, developed over five years by a consortium of international tech giants, represents a quantum leap in machine learning capabilities. Industry experts predict this advancement will revolutionize sectors ranging from healthcare to finance, potentially creating millions of new jobs while transforming traditional workflows. The system's ability to process and analyze vast datasets in real-time has already demonstrated remarkable results in early trials, with accuracy rates exceeding 99% in complex pattern recognition tasks. Medical researchers are particularly excited about applications in diagnostic imaging, where the AI has shown promise in detecting early-stage diseases with greater precision than current methods.
+      </p>
+    </article>
+
+
+    <figure class="cover-image">
+      <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=1000&fit=crop" alt="Technology and Innovation">
+      <figcaption>The future of technology unfolds</figcaption>
+    </figure>
+
+ 
+    <article class="secondary-article">
+      <h2>Climate Summit Reaches Historic Agreement on Carbon Reduction</h2>
+      <p>
+        World leaders convened at the Global Climate Summit have achieved what many thought impossible—a unanimous agreement on aggressive carbon reduction targets. The landmark accord commits all participating nations to achieving net-zero emissions by 2050, with interim milestones set for 2030 and 2040. Environmental advocates hailed the agreement as a turning point in the fight against climate change, though some critics argue the targets don't go far enough. The pact includes significant financial commitments from developed nations to support renewable energy infrastructure in developing countries. Solar and wind energy investments are expected to triple over the next decade as countries race to meet their obligations. Scientists cautiously optimistic about the agreement note that successful implementation will require unprecedented international cooperation and technological innovation.
+      </p>
+    </article>
+
+
+    <article class="small-article1">
+      <h3>Local Team Wins National Championship</h3>
+      <p>
+        The hometown heroes delivered a stunning performance in the championship finals, securing victory with a last-minute goal that sent fans into euphoria. Coach Martinez credited the team's dedication and community support for their remarkable season, which saw them overcome numerous obstacles to claim the title.
+      </p>
+    </article>
+
+ 
+    <article class="small-article2">
+      <h3>New Museum Opens Downtown</h3>
+      <p>
+        Art enthusiasts celebrated the grand opening of the Contemporary Arts Museum, featuring works from over 200 artists worldwide. The state-of-the-art facility includes interactive exhibits, virtual reality experiences, and a sculpture garden. Mayor Johnson called it "a cultural milestone for our city."
+      </p>
+    </article>
+
+
+    <article class="small-article3">
+      <h3>Stock Market Reaches Record High</h3>
+      <p>
+        Financial markets surged to unprecedented levels today, driven by strong corporate earnings and optimistic economic forecasts. Tech stocks led the rally, with major indices posting their best weekly performance in over a year. Analysts attribute the gains to renewed investor confidence and robust consumer spending data.
+      </p>
+    </article>
+
+  </main>
+
+</body>
+</html>
